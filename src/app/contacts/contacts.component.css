@@ -1,0 +1,25 @@
+th {
+  color: white;
+  background-color: green;
+}
+table {
+  border: 1px solid;
+  border-collapse: collapse;
+  width: 90%;
+  margin: 10px 0px 0px 30px;
+}
+tr {
+  background-color: yellow;
+  color: green;
+  text-align: center;
+
+}
+
+tr,td,th {
+  padding: 20px;
+  border: 1px solid;
+}
+
+tr:hover {
+  background-color: coral;
+}

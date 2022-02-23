@@ -1,0 +1,30 @@
+<h2>{{ title }}</h2>
+<div class="buttons">
+  <button
+    mat-raised-button
+    color="primary"
+    type="button"
+    routerLink="/contacts"
+  >
+    Contacts
+  </button>
+</div>
+
+<div class="buttons">
+  <button
+    mat-raised-button
+    color="primary"
+    type="button"
+    routerLink="/reminders"
+  >
+    Reminders
+  </button>
+</div>
+
+<div class="buttons">
+  <button mat-raised-button color="primary" type="button" routerLink="">
+    Home
+  </button>
+</div>
+
+<router-outlet></router-outlet>
