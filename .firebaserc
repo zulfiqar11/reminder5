@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "reminderauth-f3a38": {
+      "hosting": {
+        "reminder5": [
+          "reminderauth-f3a38"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "reminderauth-f3a38"
+  }
+}

@@ -11,35 +11,55 @@
 </mat-toolbar>
 <mat-sidenav-container>
   <mat-sidenav #sidenav="matSidenav">
-    <img
-      style="height: 100px; border-radius: 1333px"
-      class="avatar mat-elevation-z8"
-      src="https://avatars.githubusercontent.com/u/3106320?v=4"
-    />
-    <h4 class="name">Zulfiqar Syed</h4>
-    <p class="designation">Software Engineer</p>
-
-    <mat-divider></mat-divider>
+    <div *ngIf="afAuth.authState | async as user">
+      <img
+        style="height: 100px; border-radius: 1333px"
+        class="avatar mat-elevation-z8"
+        src="{{ user.photoURL }}"
+      />
+      <h4 class="name">{{ user.displayName }}</h4>
+      <mat-divider></mat-divider>
+    </div>
 
     <button mat-button class="menu-button" routerLink="">
       <span>Home</span>
     </button>
 
-    <button mat-button class="menu-button" routerLink="contacts">
+    <button
+      *ngIf="afAuth.authState | async"
+      mat-button
+      class="menu-button"
+      routerLink="contacts"
+    >
       <span>Contacts</span>
     </button>
 
-    <button mat-button class="menu-button" routerLink="reminders">
+    <button
+      *ngIf="afAuth.authState | async"
+      mat-button
+      class="menu-button"
+      routerLink="reminders"
+    >
       <span>Reminders</span>
     </button>
 
     <mat-divider></mat-divider>
 
-    <button mat-button class="menu-button" routerLink="">
+    <button
+      mat-button
+      class="menu-button"
+      *ngIf="(afAuth.authState | async) === null"
+      (click)="login()"
+    >
       <span>Login</span>
     </button>
 
-    <button mat-button class="menu-button" routerLink="">
+    <button
+      mat-button
+      class="menu-button"
+      *ngIf="afAuth.authState | async"
+      (click)="logout()"
+    >
       <span>Logout</span>
     </button>
   </mat-sidenav>

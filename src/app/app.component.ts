@@ -1,6 +1,8 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatSidenav } from '@angular/material/sidenav';
 import { BreakpointObserver } from '@angular/cdk/layout';
+import firebase from 'firebase/compat/app';
+import { AngularFireAuth } from '@angular/fire/compat/auth';
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -9,10 +11,26 @@ import { BreakpointObserver } from '@angular/cdk/layout';
 export class AppComponent implements OnInit {
   title = 'reminder 5';
 
+  // todo: ViewChild need more practice and review here.
   @ViewChild(MatSidenav) sidenav!: MatSidenav;
 
-  constructor(private observer: BreakpointObserver) {
+  constructor(private observer: BreakpointObserver, public afAuth: AngularFireAuth) {}
 
+  // todo: move auth functionality into a separate component.
+  // todo: move login to a separate component.
+  // todo: add jwt login tokenbased
+  // todo: add reactive form login form for jwt token based
+  login() {
+    const googleAuthProvider = new firebase.auth.GoogleAuthProvider();
+    this.afAuth.signInWithPopup(googleAuthProvider);
+  }
+
+  logout() {
+
+    this.afAuth.signOut();
+    // todo: after logout - redirect to the route or "/"
+    // todo: why afAuth.authState is an observable.
+    // this.afAuth.authState.subscribe(data => console.log(data?.))
   }
 
   ngOnInit(): void {
@@ -23,6 +41,7 @@ export class AppComponent implements OnInit {
     //Called after ngAfterContentInit when the component's view has been initialized. Applies to components only.
     //Add 'implements AfterViewInit' to the class.
 
+    // todo: review the observer and how it works and its properties and how sidenav is working here.
     this.observer.observe(['(max-width:800px)'])
       .subscribe((res) => {
         if (res.matches) {

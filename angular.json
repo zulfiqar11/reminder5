@@ -103,6 +103,16 @@
             ],
             "scripts": []
           }
+        },
+        "deploy": {
+          "builder": "@angular/fire:deploy",
+          "options": {
+            "prerender": false,
+            "ssr": false,
+            "browserTarget": "reminder5:build:production",
+            "firebaseProject": "reminderauth-f3a38",
+            "firebaseHostingSite": "reminderauth-f3a38"
+          }
         }
       }
     }
