@@ -3,6 +3,7 @@ import { MatSidenav } from '@angular/material/sidenav';
 import { BreakpointObserver } from '@angular/cdk/layout';
 import firebase from 'firebase/compat/app';
 import { AngularFireAuth } from '@angular/fire/compat/auth';
+import { Observable, of } from 'rxjs';
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -13,6 +14,9 @@ export class AppComponent implements OnInit {
 
   // todo: ViewChild need more practice and review here.
   @ViewChild(MatSidenav) sidenav!: MatSidenav;
+
+  // todo: any data type no good.
+  loggedIn$: Observable<any> = of();
 
   constructor(private observer: BreakpointObserver, public afAuth: AngularFireAuth) {}
 
@@ -34,7 +38,7 @@ export class AppComponent implements OnInit {
   }
 
   ngOnInit(): void {
-
+    this.loggedIn$ = this.afAuth.authState;
   }
 
   ngAfterViewInit(): void {

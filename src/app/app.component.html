@@ -11,7 +11,7 @@
 </mat-toolbar>
 <mat-sidenav-container>
   <mat-sidenav #sidenav="matSidenav">
-    <div *ngIf="afAuth.authState | async as user">
+    <div *ngIf="loggedIn$ | async as user">
       <img
         style="height: 100px; border-radius: 1333px"
         class="avatar mat-elevation-z8"
@@ -26,7 +26,7 @@
     </button>
 
     <button
-      *ngIf="afAuth.authState | async"
+      *ngIf="loggedIn$ | async"
       mat-button
       class="menu-button"
       routerLink="contacts"
@@ -35,7 +35,7 @@
     </button>
 
     <button
-      *ngIf="afAuth.authState | async"
+      *ngIf="loggedIn$ | async"
       mat-button
       class="menu-button"
       routerLink="reminders"
@@ -48,7 +48,7 @@
     <button
       mat-button
       class="menu-button"
-      *ngIf="(afAuth.authState | async) === null"
+      *ngIf="(loggedIn$ | async) === null"
       (click)="login()"
     >
       <span>Login</span>
@@ -57,7 +57,7 @@
     <button
       mat-button
       class="menu-button"
-      *ngIf="afAuth.authState | async"
+      *ngIf="loggedIn$ | async"
       (click)="logout()"
     >
       <span>Logout</span>
