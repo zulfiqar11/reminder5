@@ -1,7 +1,8 @@
+import { SecurityService } from './shared/security.service';
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatSidenav } from '@angular/material/sidenav';
 import { BreakpointObserver } from '@angular/cdk/layout';
-import firebase from 'firebase/compat/app';
+
 import { AngularFireAuth } from '@angular/fire/compat/auth';
 import { Observable, of } from 'rxjs';
 @Component({
@@ -18,27 +19,24 @@ export class AppComponent implements OnInit {
   // todo: any data type no good.
   loggedIn$: Observable<any> = of();
 
-  constructor(private observer: BreakpointObserver, public afAuth: AngularFireAuth) {}
+  constructor(private observer: BreakpointObserver, private security: SecurityService) {}
 
   // todo: move auth functionality into a separate component.
   // todo: move login to a separate component.
   // todo: add jwt login tokenbased
   // todo: add reactive form login form for jwt token based
   login() {
-    const googleAuthProvider = new firebase.auth.GoogleAuthProvider();
-    this.afAuth.signInWithPopup(googleAuthProvider);
+    this.security.login();
   }
 
   logout() {
-
-    this.afAuth.signOut();
+    this.security.logout();
     // todo: after logout - redirect to the route or "/"
-    // todo: why afAuth.authState is an observable.
-    // this.afAuth.authState.subscribe(data => console.log(data?.))
+
   }
 
   ngOnInit(): void {
-    this.loggedIn$ = this.afAuth.authState;
+    this.loggedIn$ = this.security.loggedIn();
   }
 
   ngAfterViewInit(): void {
