@@ -21,14 +21,6 @@ export class AppComponent implements OnInit {
 
   constructor(private observer: BreakpointObserver, private security: SecurityService) {}
 
-  // todo: move auth functionality into a separate component.
-  // todo: move login to a separate component.
-  // todo: add jwt login tokenbased
-  // todo: add reactive form login form for jwt token based
-  login() {
-    this.security.login();
-  }
-
   logout() {
     this.security.logout();
     // todo: after logout - redirect to the route or "/"

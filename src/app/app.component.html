@@ -49,7 +49,7 @@
       mat-button
       class="menu-button"
       *ngIf="(loggedIn$ | async) === null"
-      (click)="login()"
+      routerLink="login"
     >
       <span>Login</span>
     </button>

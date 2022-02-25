@@ -21,7 +21,6 @@ export class SecurityService {
   }
 
   loggedIn() : Observable<any> {
-    // todo: why afAuth.authState is an observable.
     return this.afAuth.authState;
   }
 }
