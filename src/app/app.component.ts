@@ -69,4 +69,5 @@ export class AppComponent implements OnInit {
   // todo: add material table for contacts
   // todo: add httpinterceptor for jwt login
   // todo: add auth guard for reminders and contacts screen
+  // todo: PageNotFoundComponent   https://angular.io/guide/router
 

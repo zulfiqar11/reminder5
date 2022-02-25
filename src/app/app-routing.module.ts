@@ -2,7 +2,6 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
 // { path: '', redirectTo: '', pathMatch: 'full'},
-
 // todo: read up on router and learn deeply.. https://angular.io/guide/router
 
 const routes: Routes = [
