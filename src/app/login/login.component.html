@@ -1,1 +1,21 @@
-<button mat-raised-button (click)="login()" color="primary">Login</button>
+<div [formGroup]="loginForm">
+  <div>
+    <mat-form-field class="example-full-width" appearance="fill">
+      <mat-label>User Id</mat-label>
+      <input matInput formControlName="userId" />
+    </mat-form-field>
+  </div>
+
+  <div>
+    <mat-form-field class="example-full-width" appearance="fill">
+      <mat-label>Password</mat-label>
+      <input matInput formControlName="password" type="password" />
+    </mat-form-field>
+  </div>
+</div>
+
+<div>
+  <button mat-raised-button (click)="login()" color="primary">Login</button>
+</div>
+
+{{ loginForm.value | json }}

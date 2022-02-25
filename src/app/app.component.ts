@@ -26,7 +26,6 @@ export class AppComponent implements OnInit {
 
   logout() {
     this.security.logout();
-    // todo: add home component and route / traffic to home component.
     this.router.navigate(['/']);
   }
 
@@ -57,17 +56,13 @@ export class AppComponent implements OnInit {
   // todo: only for chrome when the f12 network tab is open, the routing does not seem to work.
   // tried for over an hour.. chrome does not support this.
 
-  // todo: navigation its own component instead of app component?
+  // todo: move out navigation from app component to its component.
 
-  // todo: add login screen via firebase and google login.
-  // todo: manage logout button with login and rest of buttons based on login screen.
-  // todo: manage other buttons based on login
-
-  // todo: add jwt login
-
-  // tood: add hard coded reminders with material table.
+  // todo: add hard coded reminders with material table.
   // todo: add material table for contacts
   // todo: add httpinterceptor for jwt login
-  // todo: add auth guard for reminders and contacts screen
-  // todo: PageNotFoundComponent   https://angular.io/guide/router
+  // todo: when try to access authguarded link like contacts
+  // todo:      1. redirect to login screen
+  // todo:      2. after login go back to authguarded page like contacts.
+
 

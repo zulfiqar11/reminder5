@@ -12,6 +12,7 @@ export class RegisterComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  // todo: add reactive form for user registration.
   register(): void {
     alert('register the user');
   }

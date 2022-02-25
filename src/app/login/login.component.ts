@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder } from '@angular/forms';
 import { SecurityService } from '../shared/security.service';
 
 @Component({
@@ -8,13 +9,20 @@ import { SecurityService } from '../shared/security.service';
 })
 export class LoginComponent implements OnInit {
 
-  constructor(private security: SecurityService) { }
+  loginForm = this.fb.group({
+    userId: [''],
+    password: ['']
+  })
+
+  constructor(private security: SecurityService, private fb: FormBuilder) {}
 
   ngOnInit(): void {
   }
 
   // todo: add jwt login tokenbased
-  // todo: add reactive form login form for jwt token based
+  // todo: add reactive form login
+  // todo: reactive form driven by json file.
+
   login() {
     this.security.login();
   }
