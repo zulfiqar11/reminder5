@@ -5,6 +5,7 @@ import { BreakpointObserver } from '@angular/cdk/layout';
 
 import { AngularFireAuth } from '@angular/fire/compat/auth';
 import { Observable, of } from 'rxjs';
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -19,12 +20,13 @@ export class AppComponent implements OnInit {
   // todo: any data type no good.
   loggedIn$: Observable<any> = of();
 
-  constructor(private observer: BreakpointObserver, private security: SecurityService) {}
+  constructor(private observer: BreakpointObserver,
+              private security: SecurityService,
+              private router: Router) {}
 
   logout() {
     this.security.logout();
-    // todo: after logout - redirect to the route or "/"
-
+    this.router.navigate(['/']);
   }
 
   ngOnInit(): void {
