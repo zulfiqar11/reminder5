@@ -26,6 +26,7 @@ export class AppComponent implements OnInit {
 
   logout() {
     this.security.logout();
+    // todo: add home component and route / traffic to home component.
     this.router.navigate(['/']);
   }
 
