@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder } from '@angular/forms';
+import { FormBuilder, Validators } from '@angular/forms';
 import { SecurityService } from '../shared/security.service';
 
 @Component({
@@ -9,9 +9,11 @@ import { SecurityService } from '../shared/security.service';
 })
 export class LoginComponent implements OnInit {
 
+  // todo: add validators for userId (email) and password
+  // todo: add custom validator
   loginForm = this.fb.group({
-    userId: [''],
-    password: ['']
+    userId: ['', [Validators.required, Validators.email]],
+    password: ['', Validators.required]
   })
 
   constructor(private security: SecurityService, private fb: FormBuilder) {}
@@ -20,11 +22,15 @@ export class LoginComponent implements OnInit {
   }
 
   // todo: add jwt login tokenbased
-  // todo: add reactive form login
   // todo: reactive form driven by json file.
 
   login() {
     this.security.login();
+    // alert( JSON.stringify(this.loginForm.value))
+  }
+
+  loginDisabled(): boolean {
+    return !this.loginForm.valid;
   }
 
 }
