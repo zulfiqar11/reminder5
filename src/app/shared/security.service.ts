@@ -23,4 +23,9 @@ export class SecurityService {
   loggedIn() : Observable<any> {
     return this.afAuth.authState;
   }
+
+  currentUser(): Promise<firebase.User | null> {
+    return this.afAuth.currentUser;
+  }
+
 }
