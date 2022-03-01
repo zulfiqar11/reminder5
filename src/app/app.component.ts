@@ -2,8 +2,8 @@ import { SecurityService } from './shared/security.service';
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatSidenav } from '@angular/material/sidenav';
 import { BreakpointObserver } from '@angular/cdk/layout';
+import firebase from 'firebase/compat/app';
 
-import { AngularFireAuth } from '@angular/fire/compat/auth';
 import { Observable, of } from 'rxjs';
 import { Router } from '@angular/router';
 @Component({
@@ -17,9 +17,9 @@ export class AppComponent implements OnInit {
   // todo: ViewChild need more practice and review here.
   @ViewChild(MatSidenav) sidenav!: MatSidenav;
 
-  // todo: any data type no good.
-  loggedIn$: Observable<any> = of();
+  loggedIn$: Observable<firebase.User | null> = of();
 
+  // todo: super tired: watch live coding by Ahsan..
   constructor(private observer: BreakpointObserver,
               private security: SecurityService,
               private router: Router) {}

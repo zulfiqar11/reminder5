@@ -20,7 +20,7 @@ export class SecurityService {
     // this.afAuth.authState.subscribe(data => console.log(data?.))
   }
 
-  loggedIn() : Observable<any> {
+  loggedIn() : Observable<firebase.User | null> {
     return this.afAuth.authState;
   }
 
