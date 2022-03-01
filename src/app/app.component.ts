@@ -61,8 +61,6 @@ export class AppComponent implements OnInit {
   // todo: add hard coded reminders with material table.
   // todo: add material table for contacts
   // todo: add httpinterceptor for jwt login
-  // todo: when try to access authguarded link like contacts
-  // todo:      1. redirect to login screen
-  // todo:      2. after login go back to authguarded page like contacts.
+
 
 

@@ -13,6 +13,8 @@ export class RegisterComponent implements OnInit {
   }
 
   // todo: add reactive form for user registration.
+  // todo: reactive form driven by json file.
+
   register(): void {
     alert('register the user');
   }

@@ -10,9 +10,9 @@ export class SecurityService {
 
   constructor(private afAuth:AngularFireAuth) { }
 
-  login() {
+  login() : Promise<firebase.auth.UserCredential> {
     const googleAuthProvider = new firebase.auth.GoogleAuthProvider();
-    this.afAuth.signInWithPopup(googleAuthProvider);
+    return this.afAuth.signInWithPopup(googleAuthProvider);
   }
 
   logout() {
