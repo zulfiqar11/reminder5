@@ -1,3 +1,4 @@
+import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -7,16 +8,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HomeComponent implements OnInit {
 
-  constructor() { }
+  constructor(private http: HttpClient) { }
 
   ngOnInit(): void {
-    // todo: practice and learn promise
-    const promise = new Promise((resolve, reject) => {
-      resolve(9);
-    })
 
-    promise.then((val) => {console.log(val)});
-
+    // todo: demo of bad http error.
+    // this.http.get('some bad home component url')
+    //   .subscribe(
+    //     (response) => {console.log(response)}
+    //   )
   }
 
 }

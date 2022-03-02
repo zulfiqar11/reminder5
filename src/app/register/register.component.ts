@@ -12,8 +12,8 @@ export class RegisterComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  // todo: add reactive form for user registration.
-  // todo: reactive form driven by json file.
+  // todo: night time: add reactive form for user registration.
+  // todo: night time: reactive form driven by json file.
 
   register(): void {
     alert('register the user');

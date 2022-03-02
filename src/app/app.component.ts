@@ -62,5 +62,12 @@ export class AppComponent implements OnInit {
   // todo: add material table for contacts
   // todo: add httpinterceptor for jwt login
 
+  // todo: code - study - exception handling
+  // todo:  1. promise exception handling
+  // todo:  2. observable exception handling
+  // todo:  3. general exception handling
+  // todo:  4. http interceptor exception handling
+
+
 
 

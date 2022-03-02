@@ -9,9 +9,6 @@ export class AuthGuard implements CanActivate {
 
   constructor(private security: SecurityService, private router: Router) {}
 
-  // todo: review async await concept from algoexpert.
-  // todo: what is Promise<boolean | UrlTree>
-
   async canActivate(
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Promise<boolean | UrlTree>  {

@@ -10,6 +10,19 @@ export class RemindersComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
+
+    // todo: here is one way of exception handline.
+    // try {
+    //   throw new Error('I have error in Reminders Component..');
+    // }
+    // catch (error) {
+    //   console.log('caught error in Reminders Component: ' + error);
+    // }
+    // finally {
+    //   console.log('finally in Reminders Component');
+    // }
+
+
   }
 
 }
