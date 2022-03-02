@@ -66,7 +66,6 @@ export class AppComponent implements OnInit {
   // todo:  1. promise exception handling
   // todo:  2. observable exception handling
   // todo:  3. general exception handling
-  // todo:  4. http interceptor exception handling
 
 
 

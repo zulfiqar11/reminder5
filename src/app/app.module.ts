@@ -6,7 +6,7 @@ import { AppComponent } from './app.component';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
-import { MaterialModule } from './share/material.module';
+import { MaterialModule } from './shared/material.module';
 import { initializeApp,provideFirebaseApp } from '@angular/fire/app';
 import { environment } from '../environments/environment';
 import { provideAuth,getAuth } from '@angular/fire/auth';
@@ -32,5 +32,3 @@ import { AngularFireModule } from '@angular/fire/compat';
 })
 export class AppModule { }
 
-// todo: what is multi here?
-// {provide: HTTP_INTERCEPTORS, useClass: HttpErrorInterceptor, multi: true}
