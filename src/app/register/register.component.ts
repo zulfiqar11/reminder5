@@ -6,8 +6,8 @@ import { Component, OnInit } from '@angular/core';
 export interface JsonFormControl {
   name: string
   label: string
-  value: string
   type: string
+  value: string
   validators: ValidatorsInterface
 }
 
@@ -20,17 +20,15 @@ export interface JsonFormData {
   controls: JsonFormControl[];
 }
 
-// todo: study ChangeDetectionStrategy.OnPush
-  // changeDetection: ChangeDetectionStrategy.OnPush
-
 @Component({
   selector: 'app-register',
   templateUrl: './register.component.html',
   styleUrls: ['./register.component.css'],
 })
+
 export class RegisterComponent implements OnInit {
 
-  dynamicFormArray: any;
+  dynamicFormArray: JsonFormControl[] = [];
 
   // todo: review this code initialization.
   registrationForm: FormGroup = this.fb.group({});
@@ -39,11 +37,10 @@ export class RegisterComponent implements OnInit {
   constructor(private http: HttpClient, private fb: FormBuilder) {
   }
 
-
   ngOnInit(): void {
 
-    this.http.get('/assets/register-form.json')
-    .subscribe(data => {
+    this.http.get<JsonFormControl[]>('/assets/register-form.json')
+    .subscribe((data: JsonFormControl[]) => {
       this.dynamicFormArray = data;
       console.log('here is dynamic form array', this.dynamicFormArray);
       this.createFormControl();
@@ -51,7 +48,7 @@ export class RegisterComponent implements OnInit {
   }
 
   createFormControl() {
-    this.dynamicFormArray.forEach((control: any) => {
+    this.dynamicFormArray.forEach((control: JsonFormControl) => {
 
       const validatorsToAdd = [];
       // todo: review this for loop.
@@ -74,9 +71,10 @@ export class RegisterComponent implements OnInit {
       }
 
       // todo: review this code.
-      this.registrationForm.addControl(control.name,
-                                        this.fb.control(control.value, validatorsToAdd)
-                                        );
+      this.registrationForm.addControl(
+        control.name,
+        this.fb.control(control.value, validatorsToAdd)
+      );
     })
     console.log('registration form', this.registrationForm);
   }
