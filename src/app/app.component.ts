@@ -1,5 +1,5 @@
 import { SecurityService } from './shared/service/security.service';
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { ChangeDetectorRef, Component, OnInit, ViewChild } from '@angular/core';
 import { MatSidenav } from '@angular/material/sidenav';
 import { BreakpointObserver } from '@angular/cdk/layout';
 import firebase from 'firebase/compat/app';
@@ -21,6 +21,7 @@ export class AppComponent implements OnInit {
 
   // todo: super tired: watch live coding by Ahsan..
   constructor(private observer: BreakpointObserver,
+              private cd: ChangeDetectorRef,
               private security: SecurityService,
               private router: Router) {}
 
@@ -49,6 +50,8 @@ export class AppComponent implements OnInit {
         }
       } )
 
+      // todo: review - following to fix Getting NG0100 error in the console.
+      this.cd.detectChanges();
   }
 }
 

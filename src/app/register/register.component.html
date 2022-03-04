@@ -16,7 +16,12 @@
 </div>
 
 <div>
-  <button mat-raised-button (click)="register()" color="primary">
+  <button
+    [disabled]="disableRegister()"
+    mat-raised-button
+    (click)="register()"
+    color="primary"
+  >
     Register
   </button>
 </div>

@@ -66,4 +66,8 @@ export class RegisterComponent implements OnInit {
     console.log('Form valid: ', this.registrationForm.valid);
     console.log('Form values: ', this.registrationForm.value);
   }
+
+  disableRegister(): boolean {
+    return !this.registrationForm.valid;
+  }
 }
