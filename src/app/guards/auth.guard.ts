@@ -1,4 +1,4 @@
-import { SecurityService } from './../shared/security.service';
+import { SecurityService } from '../shared/service/security.service';
 import { Injectable } from '@angular/core';
 import { ActivatedRouteSnapshot, CanActivate, Router, RouterStateSnapshot, UrlTree } from '@angular/router';
 

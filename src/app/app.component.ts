@@ -1,4 +1,4 @@
-import { SecurityService } from './shared/security.service';
+import { SecurityService } from './shared/service/security.service';
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatSidenav } from '@angular/material/sidenav';
 import { BreakpointObserver } from '@angular/cdk/layout';

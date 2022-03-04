@@ -1,5 +1,5 @@
-import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
-import { HttpClient } from '@angular/common/http';
+import { RegisterService } from './../shared/service/register.service';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Component, OnInit } from '@angular/core';
 import { JsonFormControl, JsonFormData } from '../shared/model/registerform.model';
 
@@ -16,17 +16,16 @@ export class RegisterComponent implements OnInit {
   // todo: review this code initialization.
   registrationForm: FormGroup = this.fb.group({});
 
-  // todo: code: move this httpClient into a shared service wrapper.
-  constructor(private http: HttpClient, private fb: FormBuilder) {
+  constructor(private fb: FormBuilder, private registerServie: RegisterService) {
   }
 
   ngOnInit(): void {
 
-    this.http.get<JsonFormData>('/assets/register-form.json')
-    .subscribe((data: JsonFormData) => {
-      this.formData = data;
-      console.log('here is dynamic form array', this.formData.controls);
-      this.createFormControl();
+    this.registerServie.getRegisterFormData()
+      .subscribe((data: JsonFormData) => {
+        this.formData = data;
+        console.log('here is dynamic form array', this.formData.controls);
+        this.createFormControl();
     });
   }
 
@@ -63,6 +62,7 @@ export class RegisterComponent implements OnInit {
   }
 
   register(): void {
+    // todo: code - implement backend user registration
     console.log('Form valid: ', this.registrationForm.valid);
     console.log('Form values: ', this.registrationForm.value);
   }
