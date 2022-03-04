@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { Observable, of } from 'rxjs';
-import { Contact } from '../shared/contact.model';
+import { Contact } from '../shared/model/contact.model';
 
 @Component({
   selector: 'app-contacts',
