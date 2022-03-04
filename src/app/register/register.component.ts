@@ -28,7 +28,7 @@ export interface JsonFormData {
 
 export class RegisterComponent implements OnInit {
 
-  dynamicFormArray: JsonFormControl[] = [];
+  formData: JsonFormData = {controls: []};
 
   // todo: review this code initialization.
   registrationForm: FormGroup = this.fb.group({});
@@ -39,16 +39,16 @@ export class RegisterComponent implements OnInit {
 
   ngOnInit(): void {
 
-    this.http.get<JsonFormControl[]>('/assets/register-form.json')
-    .subscribe((data: JsonFormControl[]) => {
-      this.dynamicFormArray = data;
-      console.log('here is dynamic form array', this.dynamicFormArray);
+    this.http.get<JsonFormData>('/assets/register-form.json')
+    .subscribe((data: JsonFormData) => {
+      this.formData = data;
+      console.log('here is dynamic form array', this.formData.controls);
       this.createFormControl();
     });
   }
 
   createFormControl() {
-    this.dynamicFormArray.forEach((control: JsonFormControl) => {
+    this.formData.controls.forEach((control: JsonFormControl) => {
 
       const validatorsToAdd = [];
       // todo: review this for loop.
@@ -88,35 +88,14 @@ export class RegisterComponent implements OnInit {
 
 }
 
-// todo: delete these comments when all done.
 
-  // this.fb.control(control.value, validatorsToAdd)
-
-
-    // todo: study @Input again.
-  // @Input() jsonFormData: JsonFormData;
-  // todo: night time: add reactive form for user registration.
-  // todo: night time: reactive form driven by json file.
 
 
 
   // formData: JsonFormData = {controls: []};
   // registerForm: FormGroup = this.fb.group({});
 
-    // this.dynamicFormArray = [
-    //   {"ID": "FirstName", "Label": "First Namedddd"},
-    //   {"ID": "LastName", "Label": "Last Name"}
-    // ]
 
-    // this.createFormControl();
-
-  // // = [
-  // //   {"ID": "FirstName1", "Label": "First Name1"},
-  // //   {"ID": "LastName1", "Label": "Last Name1"}
-  // // ]
-
-
-// this.registrationForm = this.fb.group({});
 
 
 

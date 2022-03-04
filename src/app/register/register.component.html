@@ -1,7 +1,7 @@
 <div>Form Value: {{ registrationForm.value | json }}</div>
 <div>Form valid: {{ registrationForm.valid }}</div>
 <div [formGroup]="registrationForm">
-  <div *ngFor="let control of dynamicFormArray">
+  <div *ngFor="let control of formData.controls">
     <div>
       <mat-form-field class="example-full-width" appearance="fill">
         <mat-label>{{ control.label }}</mat-label>
@@ -20,50 +20,3 @@
     Register
   </button>
 </div>
-
-<!-- todo: delete these comments when all done. -->
-<!-- <form [formGroup]="registrationForm">
-  <div *ngFor="let control of dynamicFormArray">
-    <div>
-      <mat-form-field class="example-full-width" appearance="fill">
-        <mat-label>{{ control.Label }}</mat-label>
-        <input
-          matInput
-          [formControlName]="control.ID"
-          value="{{ control.Value }}"
-        />
-      </mat-form-field>
-    </div>
-  </div>
-</form> -->
-
-<!-- <div>
-  <div>
-    <mat-form-field class="example-full-width" appearance="fill">
-      <mat-label>Favorite food</mat-label>
-      <input matInput placeholder="Ex. Pizza" value="Sushi"/>
-    </mat-form-field>
-  </div>
-  <div>
-    <mat-form-field class="example-full-width" appearance="fill">
-      <mat-label>Favorite food</mat-label>
-      <input matInput placeholder="Ex. Pizza" value="Sushi"/>
-    </mat-form-field>
-  </div>
-</div> -->
-
-<!-- <form [formGroup]="registerForm">
-  <div *ngFor="let control of formData.controls">
-    <div>
-      <mat-form-field class="example-full-width" appearance="fill">
-        <mat-label>{{ control.label }}</mat-label>
-        <input
-          matInput
-          [type]="control.type"
-          [formControlName]="control.name"
-          [value]="control.value"
-        />
-      </mat-form-field>
-    </div>
-  </div>
-</form> -->
