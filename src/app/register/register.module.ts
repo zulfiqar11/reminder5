@@ -1,3 +1,5 @@
+import { HttpClientModule } from '@angular/common/http';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
@@ -12,8 +14,14 @@ import { MaterialModule } from '../shared/material.module';
   ],
   imports: [
     CommonModule,
+    ReactiveFormsModule,
     MaterialModule,
+    HttpClientModule,
     RegisterRoutingModule
   ]
 })
 export class RegisterModule { }
+
+
+    // // todo: code: take this out and see what happens
+    // ReactiveFormsModule,

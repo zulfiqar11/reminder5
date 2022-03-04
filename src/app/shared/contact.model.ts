@@ -5,4 +5,4 @@ export interface Contact {
   phone: string;
 }
 
-// todo: where are there 2 folders: share and shared?
+

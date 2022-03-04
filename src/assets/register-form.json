@@ -1,0 +1,14 @@
+[
+  {
+    "name": "FirstName",
+    "label": "First Name",
+    "type": "input",
+    "value": ""
+  },
+  {
+    "name": "LastName",
+    "label": "Last Name",
+    "type": "input",
+    "value": ""
+  }
+]
