@@ -31,11 +31,12 @@ export interface JsonFormData {
 export class RegisterComponent implements OnInit {
 
   dynamicFormArray: any;
+
+  // todo: review this code initialization.
   registrationForm: FormGroup = this.fb.group({});
 
   // todo: code: move this httpClient into a shared service wrapper.
   constructor(private http: HttpClient, private fb: FormBuilder) {
-    // this.registrationForm = this.fb.group({});
   }
 
 
@@ -50,8 +51,32 @@ export class RegisterComponent implements OnInit {
   }
 
   createFormControl() {
-    this.dynamicFormArray.forEach((element: any) => {
-      this.registrationForm.addControl(element.name , this.fb.control(''));
+    this.dynamicFormArray.forEach((control: any) => {
+
+      const validatorsToAdd = [];
+      // todo: review this for loop.
+      for (const[key,value] of Object.entries(control.validators)) {
+        switch(key) {
+          case 'required':
+            if(value) {
+              validatorsToAdd.push(Validators.required);
+            }
+            break;
+          case 'minLength':
+            if(value) {
+              let val = <number>value;
+              validatorsToAdd.push(Validators.minLength(val));
+            }
+            break;
+          default:
+            break;
+        }
+      }
+
+      // todo: review this code.
+      this.registrationForm.addControl(control.name,
+                                        this.fb.control(control.value, validatorsToAdd)
+                                        );
     })
     console.log('registration form', this.registrationForm);
   }

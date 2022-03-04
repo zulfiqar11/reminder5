@@ -3,12 +3,20 @@
     "name": "FirstName",
     "label": "First Name",
     "type": "input",
-    "value": ""
+    "value": "",
+      "validators": {
+        "required": true,
+        "minLength": 3
+      }
   },
   {
     "name": "LastName",
     "label": "Last Name",
     "type": "input",
-    "value": ""
+    "value": "",
+    "validators": {
+      "required": true,
+      "minLength": 4
+    }
   }
 ]
