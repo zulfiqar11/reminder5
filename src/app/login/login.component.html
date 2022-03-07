@@ -24,4 +24,5 @@
   </button>
 </div>
 
-{{ loginForm.value | json }}
+<!-- {{ loginForm.value | json }} -->
+{{ formValue() | async | json }}

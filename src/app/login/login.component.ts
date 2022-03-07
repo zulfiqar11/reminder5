@@ -1,3 +1,4 @@
+import { Observable } from 'rxjs';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
@@ -45,6 +46,10 @@ export class LoginComponent implements OnInit {
 
   loginDisabled(): boolean {
     return !this.loginForm.valid;
+  }
+
+  formValue(): Observable<any> {
+    return this.loginForm.valueChanges;
   }
 
 }

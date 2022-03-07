@@ -50,7 +50,6 @@ export class AppComponent implements OnInit {
         }
       } )
 
-      // todo: review - following to fix Getting NG0100 error in the console.
       this.cd.detectChanges();
   }
 }
