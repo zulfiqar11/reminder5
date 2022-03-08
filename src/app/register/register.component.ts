@@ -1,6 +1,6 @@
 import { RegisterService } from './../shared/service/register.service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, HostListener, OnInit } from '@angular/core';
 import { JsonFormControl, JsonFormData } from '../shared/model/registerform.model';
 
 @Component({
@@ -13,10 +13,21 @@ export class RegisterComponent implements OnInit {
 
   formData: JsonFormData = {controls: []};
 
+  // todo: code - add attribute directive to this specific module.
+  // todo: code - add attribute directive to the whole application and share across the application.
+  // todo: code - check if any where in template a function is being called and replace that with a custom pipe.
+  // todo: code - write a custom pipe.
+
   // todo: review this code initialization.
   registrationForm: FormGroup = this.fb.group({});
 
-  constructor(private fb: FormBuilder, private registerServie: RegisterService) {
+  constructor(private fb: FormBuilder,
+    private registerServie: RegisterService
+    ) {}
+
+  // todo: remove later..
+  myhandler() {
+    alert('Test alert - I am getting handled in register');
   }
 
   ngOnInit(): void {

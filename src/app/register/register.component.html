@@ -1,5 +1,8 @@
-<div>Form Value: {{ registrationForm.value | json }}</div>
+<div appHighlight [color]="'cyan'">
+  Form Value - trying hovering: {{ registrationForm.value | json }}
+</div>
 <div>Form valid: {{ registrationForm.valid }}</div>
+
 <div [formGroup]="registrationForm">
   <div *ngFor="let control of formData.controls">
     <div>
@@ -24,4 +27,8 @@
   >
     Register
   </button>
+</div>
+
+<div appHighlight [color]="'green'" (highlighted)="myhandler()">
+  <p>This is a register page for the user.</p>
 </div>
