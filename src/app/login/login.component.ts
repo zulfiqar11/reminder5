@@ -51,5 +51,4 @@ export class LoginComponent implements OnInit {
   formValue(): Observable<any> {
     return this.loginForm.valueChanges;
   }
-
 }

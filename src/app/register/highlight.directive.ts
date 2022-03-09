@@ -8,9 +8,7 @@ export class HighlightDirective {
   @Input() color = '';
   @Output() highlighted = new EventEmitter<void>();
 
-  constructor(private el: ElementRef) {
-
-  }
+  constructor(private el: ElementRef) {}
 
   @HostListener('mouseenter') onMouseEnter() {
     this.highlight(this.color);

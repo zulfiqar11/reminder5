@@ -1,7 +1,25 @@
+import { Observable, of, PartialObserver, Subscribable, Unsubscribable } from 'rxjs';
 import { RegisterService } from './../shared/service/register.service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { Component, ElementRef, HostListener, OnInit } from '@angular/core';
+import { Component, ElementRef, HostListener, NgModule, OnInit, Injectable } from '@angular/core';
 import { JsonFormControl, JsonFormData } from '../shared/model/registerform.model';
+
+@Injectable({
+  providedIn: "root"
+})
+export class User1Service {
+  constructor() {}
+  doSomething() {alert('im doing some thing.')}
+}
+
+class CustomSubscribable implements Subscribable<any> {
+  subscribe({next}: any) {
+      next("hi from custom subscribable");
+      return {
+        unsubscribe: () => console.log("unsubscribed")
+      };
+    };
+}
 
 @Component({
   selector: 'app-register',
@@ -12,6 +30,9 @@ import { JsonFormControl, JsonFormData } from '../shared/model/registerform.mode
 export class RegisterComponent implements OnInit {
 
   formData: JsonFormData = {controls: []};
+  stream$: Observable<string> = of('hello world. how is it going.');
+  stream1!: Promise<any>;
+  stream2!: any;
 
   // todo: code - add attribute directive to this specific module.
   // todo: code - add attribute directive to the whole application and share across the application.
@@ -22,6 +43,7 @@ export class RegisterComponent implements OnInit {
   registrationForm: FormGroup = this.fb.group({});
 
   constructor(private fb: FormBuilder,
+    private us1 : User1Service,
     private registerServie: RegisterService
     ) {}
 
@@ -31,6 +53,11 @@ export class RegisterComponent implements OnInit {
   }
 
   ngOnInit(): void {
+
+    this.us1.doSomething();
+
+    this.stream1 = new Promise((resolve, reject) => {resolve("hello world promise")});
+    this.stream2 = new CustomSubscribable();
 
     this.registerServie.getRegisterFormData()
       .subscribe((data: JsonFormData) => {
