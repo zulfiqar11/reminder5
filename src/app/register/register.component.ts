@@ -4,13 +4,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Component, ElementRef, HostListener, NgModule, OnInit, Injectable } from '@angular/core';
 import { JsonFormControl, JsonFormData } from '../shared/model/registerform.model';
 
-@Injectable({
-  providedIn: "root"
-})
-export class User1Service {
-  constructor() {}
-  doSomething() {alert('im doing some thing.')}
-}
+
 
 class CustomSubscribable implements Subscribable<any> {
   subscribe({next}: any) {
@@ -34,16 +28,18 @@ export class RegisterComponent implements OnInit {
   stream1!: Promise<any>;
   stream2!: any;
 
-  // todo: code - add attribute directive to this specific module.
-  // todo: code - add attribute directive to the whole application and share across the application.
+  // todo: code - zone.js add code
+  // todo: code - add ChangeDetectorRef , markForCheck.
+  // todo: code - add onPush change detection.
   // todo: code - check if any where in template a function is being called and replace that with a custom pipe.
   // todo: code - write a custom pipe.
+  // todo: code - add FormArray in this reactive form
+  // todo: code - add ControlValueAccessor
 
   // todo: review this code initialization.
   registrationForm: FormGroup = this.fb.group({});
 
   constructor(private fb: FormBuilder,
-    private us1 : User1Service,
     private registerServie: RegisterService
     ) {}
 
@@ -54,7 +50,6 @@ export class RegisterComponent implements OnInit {
 
   ngOnInit(): void {
 
-    this.us1.doSomething();
 
     this.stream1 = new Promise((resolve, reject) => {resolve("hello world promise")});
     this.stream2 = new CustomSubscribable();
